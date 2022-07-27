@@ -1,0 +1,56 @@
+--Create your own store! Your store should sell one type of things, like clothing or bikes, 
+--whatever you want your store to specialize in. 
+--You should have a table for all the items in your store, and at least 5 columns for the 
+--kind of data you think you'd need to store. You should sell at least 15 items, and use select 
+--statements to order your items by price and show at least one statistic about the items.
+
+CREATE TABLE gummy_store(
+    id INTEGER PRIMARY KEY,
+    flavor TEXT,
+    price NUMERIC,
+    quantity INTEGER,
+    amt_sold INTEGER
+    );
+
+INSERT INTO gummy_store
+VALUES (1, 'strawberry', 0.50, 100, 35),
+        (2, 'watermelon', 0.60, 100, 20),
+        (3, 'grape', 0.40, 120, 44),
+        (4, 'orange', 0.35, 105, 70),
+        (5, 'cherry', 0.35, 100, 39),
+        (6, 'coke', 0.70, 200, 150),
+        (7, 'banana', 0.65, 150, 67),
+        (8, 'lemon', 0.45, 120, 35),
+        (9, 'peach', 0.55, 145, 90),
+        (10, 'apple', 0.60, 150, 45),
+        (11, 'pineapple', 0.70, 135, 34),
+        (12, 'ube', 0.80, 180, 125),
+        (13, 'lime', 0.55, 130, 24),
+        (14, 'ginger', 0.45, 100, 77),
+        (15, 'sour', 0.50, 200, 145);
+        
+SELECT *
+FROM gummy_store;
+
+--Which flavor sold the most units
+SELECT 
+    flavor,
+    price,
+    max(amt_sold) as highest_seller
+FROM gummy_store;
+
+--How many units were sold in total? 
+SELECT
+    SUM(amt_sold)
+    FROM gummy_store;
+
+--How many units were made to be sold?
+SELECT
+    SUM(quantity)
+FROM gummy_store;
+
+--On average, how many of each flavor were sold?
+SELECT
+    AVG(amt_sold) as average_no_sold
+FROM gummy_store;
+
