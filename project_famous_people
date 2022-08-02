@@ -1,7 +1,7 @@
 --Project: Famous people
 
---In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice 
---human readable lists.
+/*In this project, you’re going to make your own table with some small set of “famous people”, 
+then make more tables about things they do and join those to create nice human readable lists.*/
 
 /* Create table about the people and what they do here */
 
@@ -38,18 +38,21 @@ VALUES ('Harry', 'Potter'),
     ('Lily','Evans'),
     ('Sirius','Black'),
     ('Remus','Lupin'),
-    ('Bellatrix','Lestrange');
+    ('Bellatrix','Lestrange'),
+    ('Neville','Longbottom');
     
 
 
 INSERT INTO friends (id1, id2)
-VALUES (1,2),(2,3),(1,3),(1,5),(2,5),(4,11),(6,11),(6,8),(7,8),(7,9),(7,10),(8,9),(8,10),(9,10);
+VALUES (1,2),(2,3),(1,3),(1,5),(2,5),(4,11),(6,11),(6,8),(7,8),(7,9),(7,10),(8,9),(8,10),(9,10),(1,12),(2,12),(3,12);
 
 INSERT INTO enemies (id1, id2)
 VALUES (1,4),(1,11),(2,4),(3,4),(6,7),(6,9),(6,10);
 
 INSERT INTO ships (id1, id2, shipname, canon)
-VALUES (1,2,'Harmony','no'),(1,5,'Hinny','yes'),(2,3,'Romione','yes'),(2,4,'Dramione','no'),(6,8,'Snily','no'),(7,8,'Jily','yes'),(9,10,'Wolfstar','no');
+VALUES (1,2,'Harmony','no'),(1,5,'Hinny','yes'),(2,3,'Romione','yes'),(2,4,'Dramione','no'),(6,8,'Snily','no'),(7,8,'Jily','yes'),(9,10,'Wolfstar','no'),
+    (5,12,'Nevinny','no'),(1,4,'Drarry','no'),(2,5,'Herminny','no'),(2,12,'Nevmione','no'),(1,12,'Nevarry','no'),(6,7,'Jeverus','no'),(1,3,'Rarry','no'),
+    (2,11,'Bellamione','no');
 
 
 /*Show a table of the first names for each pairing of friends*/
@@ -86,4 +89,3 @@ JOIN persons a
 ON a.id = ships.id1
 JOIN persons b
 ON b.id = ships.id2;
-
