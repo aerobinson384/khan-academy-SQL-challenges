@@ -4,3 +4,86 @@
 --human readable lists.
 
 /* Create table about the people and what they do here */
+
+CREATE TABLE persons(
+    id INTEGER PRIMARY KEY, 
+    fname TEXT,
+    lname TEXT);
+    
+CREATE TABLE friends(
+    id INTEGER PRIMARY KEY,
+    id1 INTEGER,
+    id2 INTEGER);
+    
+CREATE TABLE enemies(
+    id INTEGER PRIMARY KEY,
+    id1 INTEGER,
+    id2 INTEGER);
+    
+CREATE TABLE ships(
+    id INTEGER PRIMARY KEY,
+    id1 INTEGER,
+    id2 INTEGER,
+    shipname TEXT,
+    canon TEXT);
+
+INSERT INTO persons (fname, lname)
+VALUES ('Harry', 'Potter'), 
+    ('Hermione', 'Granger'),
+    ('Ron','Weasley'),
+    ('Draco','Malfoy'),
+    ('Ginny','Weasley'),
+    ('Severus','Snape'),
+    ('James','Potter'),
+    ('Lily','Evans'),
+    ('Sirius','Black'),
+    ('Remus','Lupin'),
+    ('Bellatrix','Lestrange');
+    
+
+
+INSERT INTO friends (id1, id2)
+VALUES (1,2),(2,3),(1,3),(1,5),(2,5),(4,11),(6,11),(6,8),(7,8),(7,9),(7,10),(8,9),(8,10),(9,10);
+
+INSERT INTO enemies (id1, id2)
+VALUES (1,4),(1,11),(2,4),(3,4),(6,7),(6,9),(6,10);
+
+INSERT INTO ships (id1, id2, shipname, canon)
+VALUES (1,2,'Harmony','no'),(1,5,'Hinny','yes'),(2,3,'Romione','yes'),(2,4,'Dramione','no'),(6,8,'Snily','no'),(7,8,'Jily','yes'),(9,10,'Wolfstar','no');
+
+
+/*Show a table of the first names for each pairing of friends*/
+SELECT 
+    a.fname as person,
+    b.fname as friends_with
+FROM friends
+JOIN persons a
+ON a.id = friends.id1
+JOIN persons b
+ON b.id = friends.id2;
+
+--SELECT * FROM persons;
+/* Show a table with the first names for each pairing of enemies.*/
+SELECT
+    a.fname as person,
+    b.fname as enemy
+FROM enemies
+JOIN persons a
+ON a.id = enemies.id1
+JOIN persons b 
+ON b.id = enemies.id2;
+
+/*Show the popular ships, include a column for the ship name and
+whether the ship is canon or not*/
+
+SELECT
+    a.fname as person,
+    b.fname as shipped_with,
+    shipname,
+    canon
+FROM ships
+JOIN persons a
+ON a.id = ships.id1
+JOIN persons b
+ON b.id = ships.id2;
+
